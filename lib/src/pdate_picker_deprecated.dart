@@ -146,7 +146,7 @@ class PDayPicker extends StatelessWidget {
     int firstDayOfWeekIndex = 0;
     final List<Widget> result = <Widget>[];
     for (int i = firstDayOfWeekIndex; true; i = (i + 1) % 7) {
-      final String weekday = narrowWeekdays[i];
+      final String weekday = shortDayName[i];
       result.add(ExcludeSemantics(
         child: Center(child: Text(weekday, style: headerStyle)),
       ));
@@ -711,7 +711,7 @@ class _YearPickerState extends State<PYearPicker> {
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterial(context));
     final ThemeData themeData = Theme.of(context);
-    final TextStyle? style = themeData.textTheme.bodyText2;
+    final TextStyle? style = themeData.textTheme.bodyMedium;
     return ListView.builder(
       dragStartBehavior: widget.dragStartBehavior,
       controller: scrollController,
@@ -721,7 +721,7 @@ class _YearPickerState extends State<PYearPicker> {
         final int year = widget.firstDate.year + index;
         final bool isSelected = year == widget.selectedDate.year;
         final TextStyle? itemStyle = isSelected
-            ? themeData.textTheme.headline5!
+            ? themeData.textTheme.headlineSmall!
                 .copyWith(color: themeData.colorScheme.secondary)
             : style;
         return InkWell(
